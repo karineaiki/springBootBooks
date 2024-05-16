@@ -1,6 +1,6 @@
 package com.apirest.simplon.model;
 
-import jakarta.annotation.sql.DataSourceDefinition;
+import io.micrometer.common.lang.NonNull;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,24 +10,20 @@ import jakarta.persistence.Id;
 @Entity(name= "books")
 public class Book {
     @Id
-    @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column
+
+    @NonNull
+    @Column(length = 100, nullable = false)
     private String title;
-    @Column
+
+    @Column(columnDefinition = "TEXT")
     private Long description;
-    @Column
+
+    @Column(columnDefinition = "BOOLEAN DEFAULT true")
     private Boolean available;
 
     public Book() {}
-
-    // public Book(Long id, String title, Long description, Boolean available) {
-    //     this.id = id;
-    //     this.title = title;
-    //     this.description = description;
-    //     this.available = available;
-    // }
 
     public Long getBookId() {
         return this.id;
