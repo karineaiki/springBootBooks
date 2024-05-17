@@ -46,10 +46,10 @@ public class BookService {
     
         if (existingBook.isPresent()) {
             Book updatedBook = existingBook.get();
-            updatedBook.setBookId(id);
-            updatedBook.setBookTitle(bookData.getBookTitle());
-            updatedBook.setBookDescription(bookData.getBookDescription());
-            updatedBook.setBooksIsAvailable(bookData.bookIsAvailable());
+            updatedBook.setId(id);
+            updatedBook.setTitle(bookData.getTitle());
+            updatedBook.setDescription(bookData.getDescription());
+            updatedBook.setAvailable(bookData.isAvailable());
     
             return bookRepository.save(updatedBook);
         } else {
